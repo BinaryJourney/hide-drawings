@@ -1,0 +1,28 @@
+{
+  "name": "hide-drawings",
+  "title": "Hide Drawings",
+  "description": "A module that enables you to toggle on or off the drawings done with foundry drawing tool",
+  "authors": [
+    {
+      "name": "BinaryJourney"
+    }
+  ],
+  "version": "0.1",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  },
+  "scripts": [
+    "scripts/hide-drawings.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "styles": [
+    "styles/hide-drawings.css"
+  ]
+}
