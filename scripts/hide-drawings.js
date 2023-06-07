@@ -9,9 +9,9 @@ Hooks.once('init', async function () {
                 key: "Key" + my_key,
             }
         ],
-        onDown: () => hideCanvasDrawings(my_key),
+        onDown: () => hideCanvasDrawings(),
         onUp: () => {},
-        restricted: true,
+        restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL
     });
 });
@@ -22,7 +22,7 @@ Hooks.once('ready', async function () {
     game.settings.register("hide-drawings", "hideDrawingSettings", {
         name: "Register hide-drawings keybind",
         hint: "You can edit the keybind to toggle drawings here. Be careful to bind as if you use a QWERTY keyboard.",
-        scope: "world",
+        scope: "client",
         config: true,
         requiresReload: true,
         type: String,
@@ -38,21 +38,19 @@ function getKeyFromSettings() {
     let my_key = "F";
 
     //Ty to get Key from world database
-    game.settings.storage.forEach((value, key) => {
-        if(key === "world") value.forEach((value, key) => {
-            if(value.key === "hide-drawings.hideDrawingSettings") {
-                my_key = value.value;
-            }
+    try {
+        my_key = game.settings.get('hide-drawings','hideDrawingSettings');
+    } catch (e) {
+        console.log("hide-drawings | The setting couldn't be fetched. Setting default key " + my_key)
+    }
 
-        });
-    });
     return my_key;
 }
 
 //Hide drawings function. The visible here isn't the same visibility toggle
 //the GM has as a button on the drawing. If the player use this it won't mess with any
 //drawing you are trying to hide
-function hideCanvasDrawings(my_key) {
+function hideCanvasDrawings() {
     game.canvas.drawings.objects.children.forEach((drawing) => {
         drawing.visible = !drawing.visible;
     })
