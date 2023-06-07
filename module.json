@@ -15,14 +15,8 @@
   "scripts": [
     "scripts/hide-drawings.js"
   ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
-  "styles": [
-    "styles/hide-drawings.css"
-  ]
+  "manifest": "https://raw.githubusercontent.com/BinaryJourney/hide-drawings/main/module.json",
+  "download": "https://github.com/BinaryJourney/hide-drawings/releases/download/v0.1/v0.1.zip",
+  "url": "https://github.com/BinaryJourney/hide-drawings",
+  "bugs": "https://github.com/BinaryJourney/hide-drawings/issues",
 }
